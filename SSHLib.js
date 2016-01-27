@@ -169,6 +169,8 @@ Host.prototype.connect = function(SSHPool) {
     if (connections) {
       SSHPool.emit('close');
     }
+    this.removeAllListeners('ready');
+    this.removeAllListeners('close');
   });
 
   this._client.on('error', function(err) {
